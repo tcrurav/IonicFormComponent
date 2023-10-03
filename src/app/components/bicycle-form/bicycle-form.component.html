@@ -1,0 +1,18 @@
+<form [formGroup]="bicycleForm" (ngSubmit)="submitForm()" novalidate>
+  <ion-item lines="full">
+    <ion-input formControlName="name" type="text" aria-label="Name"></ion-input>
+  </ion-item>
+  <div *ngIf="this.bicycleForm.controls['name']?.touched && bicycleForm.controls['name']?.invalid">
+    <div class="ion-padding" *ngIf="this.bicycleForm.controls['name']?.errors?.['required']">
+      <ion-text color="danger">Name is required.</ion-text>
+    </div>
+    <div class="ion-padding" color="danger" *ngIf="this.bicycleForm.controls['name']?.errors?.['minlength']">
+      <ion-text color="danger">Name should be min 2 chars long.</ion-text>
+    </div>
+  </div>
+  <ion-row>
+    <ion-col>
+      <ion-button type="submit" color="danger" expand="block">Submit</ion-button>
+    </ion-col>
+  </ion-row>
+</form>
